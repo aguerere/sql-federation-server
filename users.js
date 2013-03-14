@@ -4,12 +4,12 @@ var bcrypt = require('bcrypt');
 
 function mapProfileToPassportProfile (userProfile) {
   var passportUser = {
+    id: userProfile.id,
     displayName: userProfile.displayname,
     name: {
       familyName: userProfile.lastname,
       givenName:  userProfile.firstname
     }, 
-    id: userProfile.id,
     emails:   [{value: userProfile.email}],
     validPassword: function (pwd) {
       return bcrypt.compareSync(pwd, userProfile.password);
