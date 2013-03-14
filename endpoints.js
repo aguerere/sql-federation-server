@@ -12,8 +12,8 @@ var callbacks = process.env.WSFED_CALLBACKS_URLS
 var issuer = process.env.WSFED_ISSUER;
 
 var credentials = {
-  cert: fs.readFileSync(path.join(__dirname, '/certs/contoso.pem')),
-  key:  fs.readFileSync(path.join(__dirname, '/certs/contoso.key'))
+  cert: fs.readFileSync(path.join(__dirname, '/certs/cert.pem')),
+  key:  fs.readFileSync(path.join(__dirname, '/certs/cert.key'))
 };
 
 var respondWsFederation = wsfed.auth({

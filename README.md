@@ -17,6 +17,18 @@ There are few environment variables you have to set in order to run this app:
 
 If you deploy this using iisnode, copy and Web.config-sample into Web.config and modify the settings there.
 
+## Certificates
+
+In order to sign the saml tokens, you need a valid certificate with public and private key.
+
+You can generate a self signed certificate with the following command:
+
+~~~
+openssl req -new -newkey rsa:2048 -days 365 -nodes -x509 -subj "/CN=something.com" -keyout cert.key  -out cert.pem
+~~~
+
+Copy the two generated files to the ```certs``` folder and replace the ones provided as example.
+
 ## Customize the user validation mechanism
 
 You can customize the way user and password are validated by changing the ```user.js``` file.
