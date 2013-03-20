@@ -1,6 +1,6 @@
-var sql = require('msnodesql');
+var sql      = require('msnodesql');
 var conn_str = process.env.SQL_CONNECTION_STRING;
-var bcrypt = require('bcrypt');
+// var bcrypt = require('bcrypt');
 
 function mapProfileToPassportProfile (userProfile) {
   var passportUser = {
@@ -12,7 +12,15 @@ function mapProfileToPassportProfile (userProfile) {
     }, 
     emails:   [{value: userProfile.email}],
     validPassword: function (pwd) {
-      return bcrypt.compareSync(pwd, userProfile.password);
+      //Storing plain text passwords on a database is **VERY DISCOURAGED**.
+      //Don't do this, seriously.
+      return pwd === userProfile.password;
+      
+      // bcrypt is the best algorithm to salt passwords.
+      // https://github.com/ncb000gt/node.bcrypt.js/
+      // However this module requires openssl installed in your machine.
+      // There are other less strong mechanism to salt passwords.
+      // return bcrypt.compareSync(pwd, userProfile.password);
     }
   };
 
