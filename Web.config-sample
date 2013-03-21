@@ -3,18 +3,20 @@
         <add key="SQL_CONNECTION_STRING" 
              value="Driver={SQL Server Native Client 11.0};Server={.\sqlexpress};Database={wellscordoba};UID={wellsweb};PWD={wellsweb};" />
         
-        <add key="WSFED_ISSUER" 
-             value="SQL-FS-EXAMPLE" />
-
-        <!-- Comma separated list of callback urls -->
-        <add key="WSFED_CALLBACKS_URLS" 
-             value="http://lalal.auth0.com/callback" />
+        <add key="WSFED_ISSUER" value="SQL-FS-EXAMPLE" />
 
         <add key="SITE_NAME" value="CONTOSO">
         
         <add key="SESSION_SECRET" value="CONTOSO">
-            <!-- 
-                $env:WSFED_ISSUER="SQL-FS-EXAMPLE"; $env:WSFED_CALLBACKS_URLS="http://123.com/comcallback"; $env:SITE_NAME="CONTOSO"; $env:SESSION_SECRET="CONTOSO"; -->
+
+        <!-- List of authorized REALMS with the callback urls -->
+        <add key="REALM-urn:myrealm" 
+             value="https://mycallbackurl.com/login/callback" />
+
+        <!-- example for auth0 -->
+        <add key="REALM-urn:auth0:gGmTcDaQm6tmnVq1tVx3HDaoR3YUJQwF" 
+             value="https://mydomain.auth0.com/login/callback" />
+
     </appSettings>
 
     <system.webServer>
