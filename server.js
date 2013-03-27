@@ -2,6 +2,7 @@ var http     = require('http');
 var express  = require('express');
 var passport = require('passport');
 
+var config = require('./config.json');
 
 require('./setupPassport');
 
@@ -20,7 +21,7 @@ app.configure(function(){
   this.use(express.bodyParser());
   this.use(cookieSessions({
     session_key:    'sqlfs',
-    secret:         process.env.SESSION_SECRET
+    secret:         config.SESSION_SECRET
   }));
 
   this.use(passport.initialize());
@@ -31,4 +32,4 @@ app.configure(function(){
 require('./endpoints').install(app);
 
 http.createServer(app)
-    .listen(process.env.PORT || 5000);
+    .listen(config.PORT || 4000);

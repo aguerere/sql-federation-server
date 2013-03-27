@@ -1,5 +1,6 @@
 var sql      = require('msnodesql');
-var conn_str = process.env.SQL_CONNECTION_STRING;
+var config   = require('./config');
+var conn_str = config.SQL_CONNECTION_STRING;
 // var bcrypt = require('bcrypt');
 
 function mapProfileToPassportProfile (userProfile) {

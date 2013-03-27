@@ -2,9 +2,10 @@ var fs       = require('fs');
 var path     = require('path');
 var passport = require('passport');
 var wsfed    = require('wsfed');
+var config   = require('./config');
 
 
-var issuer = process.env.WSFED_ISSUER;
+var issuer = config.WSFED_ISSUER;
 
 var credentials = {
   cert: fs.readFileSync(path.join(__dirname, '/certs/cert.pem')),
@@ -16,7 +17,7 @@ var respondWsFederation = wsfed.auth({
   cert:        credentials.cert,
   key:         credentials.key,
   getPostURL:  function (wtrealm, wreply, req, callback) {
-    var realmPostURLs = process.env['REALM-' + wtrealm];
+    var realmPostURLs = config['REALM'][wtrealm];
     if (realmPostURLs) {
       realmPostURLs = realmPostURLs.split(',');
       if (wreply && ~realmPostURLs.indexOf(wreply)) {
@@ -41,7 +42,7 @@ exports.install = function (app) {
     },
     function (req, res) {
       return res.render('login', {
-        title: process.env.SITE_NAME
+        title: config.SITE_NAME
       });
     });
 
