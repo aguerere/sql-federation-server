@@ -1,6 +1,6 @@
 This is an Security Token Service example that speaks [WS-Federation](http://msdn.microsoft.com/en-us/library/bb498017.aspx) with Saml11 tokens fully implemented in node.js.
 
-Users are authenticated with an SQL-Server table where user names and _salted_ passwords are stored, thus the name **sql-federation-server**. 
+Users are authenticated with an SQL-Server table where user names and _salted_ passwords are stored, thus the name **sql-federation-server**.
 
 Since it uses [node-sqlserver](https://github.com/WindowsAzure/node-sqlserver) it can run only on Windows for now but you can easily swap this to some other thing like Postgresql or mongodb.
 
@@ -41,6 +41,14 @@ By default the login looks like this:
 
 You can change ```views/login.ejs```, ```public/site.css``` and ```public/imgs/logo.png```.
 
+## Issue Reporting
+
+If you have found a bug or if you have a feature request, please report them at this repository issues section. Please do not report security vulnerabilities on the public GitHub issue tracker. The [Responsible Disclosure Program](https://auth0.com/whitehat) details the procedure for disclosing security issues.
+
+## Author
+
+[Auth0](auth0.com)
+
 ## License
 
-MIT!
+This project is licensed under the MIT license. See the [LICENSE](LICENSE) file for more info.
